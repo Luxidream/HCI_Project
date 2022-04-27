@@ -9,6 +9,26 @@
     <title>Movie Rating Site</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet" />
+    <script src="/js/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".cbtn").click(function() {
+                $(".cover-all").toggle();
+                $(".cover-part").toggle();
+                $("#exampleFormControlTextarea1").append(this.innerText)
+            });
+            $(".sbtn").click(function() {
+                if($("#exampleFormControlTextarea1").val().trim().length < 1)
+                {
+                    alert("Blip...");
+                    return; 
+                } else {
+                    alert("AVENGERS ASSEMBLE!!!");
+                }
+
+            });
+        });
+    </script>
 </head>
 
 <!--<body style="background-image: url('/img/background.jpeg'); background-repeat: no-repeat; background-size: 100%;">-->
@@ -114,68 +134,73 @@
       </div>
   </div>
 </div>
-<div class="row">
+<div class="row col-lg-12">
+    <div class="cover-all col-lg-6">
+        <div class="keywords">
+            <button type="active" class="btn btn-primary cbtn">Activate1</button>
+            <button type="active" class="btn btn-primary cbtn">Activate2</button>
+            <button type="active" class="btn btn-primary cbtn">Activate3</button>
+            <button type="active" class="btn btn-primary cbtn">Activate3</button>
+        </div>
+    </div>
     <div class="col-lg-6 align-items-center my-5">
       <div class="row">
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="25" placeholder="Enter Your comments"></textarea>
         <div class="col-auto">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary sbtn">Submit</button>
       </div>
   </div>
 </div>            
 <div class="col-lg-6 align-items-center my-5">
-    <div class="mcontainer">
-<!--       <div class="arrow-left">
-        <i class="icon-angle-left"></i>
-    </div> -->
-    <div class="item item-1">
-        <iframe width="300" height="200" src="https://www.youtube-nocookie.com/embed/YLorLVa95Xo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="cover-part"></div>
+    <div class="scrollmenu">
+        <a>
+            <iframe class="cimg" src="https://www.youtube-nocookie.com/embed/YLorLVa95Xo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </a>
+        <a>
+            <iframe class="cimg" src="https://www.youtube-nocookie.com/embed/oYSD2VQagc4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </a>
+
+        <a>
+            <img src="img/img1.png" class="cimg">
+        </a>
+        <a>
+            <img src="img/img2.png" class="cimg">
+        </a>
+        <a>
+            <img src="img/img3.jpeg" class="cimg">
+        </a>
+
     </div>
 
-    <div class="item item-2">
+    <div class="wrapper">
+        <input id="exp1" class="exp"  type="checkbox">
+        <div class="text">
+            <label class="ebtn" for="exp1"></label>
+            Lorem:
+            Hated it at first, I like it more each time I re-watch
+        </div>
     </div>
-
-    <div class="item item-3">
-        <img src="img/img1.png" class="cimg">
+    <div class="wrapper">
+        <input id="exp2" class="exp"  type="checkbox">
+        <div class="text">
+            <label class="ebtn" for="exp2"></label>
+            shangsta9 November 2013:
+            The first time I saw this movie I really didn't like it, I had just come off the high of "The Avengers" and let me make it clear, this one isn't as good. That said it is significantly better than Iron Man 2 and that's because the story is deeper and direct. There's a lot less focus on explosions and fancy effects (although there is plenty of that) and more on dialogue and character development.
+            One thing I like about this movie is that you get to learn more about Tony Stark, as much as I loved his arrogance in IM1, 2 at the end of Avengers he was humbled and that continues in this one. On the one hand I love the suits and the fancy technology but it's Robert Downey's sarcasm and wit that make him so great for this franchise.
+            Yes there is a big plot twist but it by no means ruins the movie and while I was not a fan of the ending, you can see where things are going towards Avengers 2.
+            It may not be for you, my only advice is to make sure you watch it again. I was angry the first time I did and thought the movie was a joke, each additional time I've watched it I take something more from it and enjoy it a little more.
+            Usually the third movie in a series is a let down
+        </div>
     </div>
-
-    <div class="item item-4">
-        <img src="img/img2.png" class="cimg">
+    <div class="wrapper">
+        <input id="exp3" class="exp"  type="checkbox">
+        <div class="text">
+            <label class="ebtn" for="exp3"></label>
+            JayPatton8831 August 2020:
+            Not in the case of Iron man III in the Iron man trilogy.
+        </div>  
     </div>
-
-<!--     <div class="arrow-right">
-        <i class="icon-angle-right"></i>
-    </div> -->
-</div>
-
-<div class="wrapper">
-    <input id="exp1" class="exp"  type="checkbox">
-    <div class="text">
-        <label class="ebtn" for="exp1"></label>
-        Lorem:
-        Hated it at first, I like it more each time I re-watch
-    </div>
-</div>
-<div class="wrapper">
-    <input id="exp2" class="exp"  type="checkbox">
-    <div class="text">
-        <label class="ebtn" for="exp2"></label>
-        shangsta9 November 2013:
-        The first time I saw this movie I really didn't like it, I had just come off the high of "The Avengers" and let me make it clear, this one isn't as good. That said it is significantly better than Iron Man 2 and that's because the story is deeper and direct. There's a lot less focus on explosions and fancy effects (although there is plenty of that) and more on dialogue and character development.
-        One thing I like about this movie is that you get to learn more about Tony Stark, as much as I loved his arrogance in IM1, 2 at the end of Avengers he was humbled and that continues in this one. On the one hand I love the suits and the fancy technology but it's Robert Downey's sarcasm and wit that make him so great for this franchise.
-        Yes there is a big plot twist but it by no means ruins the movie and while I was not a fan of the ending, you can see where things are going towards Avengers 2.
-        It may not be for you, my only advice is to make sure you watch it again. I was angry the first time I did and thought the movie was a joke, each additional time I've watched it I take something more from it and enjoy it a little more.
-        Usually the third movie in a series is a let down
-    </div>
-</div>
-<div class="wrapper">
-    <input id="exp3" class="exp"  type="checkbox">
-    <div class="text">
-        <label class="ebtn" for="exp3"></label>
-        JayPatton8831 August 2020:
-        Not in the case of Iron man III in the Iron man trilogy.
-    </div>  
-</div>
 </div>
 </div>
 
