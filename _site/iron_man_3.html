@@ -10,20 +10,27 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet" />
     <script src="/js/jquery-3.6.0.js"></script>
+    <!-- <script type = "text/javascript" src="js/particle.js"></script> -->
     <script type="text/javascript">
         $(document).ready(function() {
             $(".cbtn").click(function() {
-                $(".cover-all").toggle();
-                $(".cover-part").toggle();
+                $("#comment-area").toggle();
+                $("#comment-media"+this.id.charAt(this.id.length-1)).toggle();
+                $("#activate-container").toggle();
                 $("#exampleFormControlTextarea1").append(this.innerText)
             });
-            $(".sbtn").click(function() {
+            $("#sbtn").click(function() {
                 if($("#exampleFormControlTextarea1").val().trim().length < 1)
                 {
                     alert("Blip...");
                     return; 
                 } else {
-                    alert("AVENGERS ASSEMBLE!!!");
+                    $("#c").toggle();
+                    setTimeout(function() {
+                        if (confirm("AVENGERS ASSEMBLE!!!")) {
+                            $("#c").toggle();
+                            $("#exampleFormControlTextarea1").val('');
+                        }; },3000);
                 }
 
             });
@@ -134,41 +141,190 @@
       </div>
   </div>
 </div>
-<div class="row col-lg-12">
-    <div class="cover-all col-lg-6">
-        <div class="keywords">
-            <button type="active" class="btn btn-primary cbtn">Activate1</button>
-            <button type="active" class="btn btn-primary cbtn">Activate2</button>
-            <button type="active" class="btn btn-primary cbtn">Activate3</button>
-            <button type="active" class="btn btn-primary cbtn">Activate3</button>
+<div style="height: 800px; position: relative;">
+    <canvas id="c"></canvas>
+
+    <script id="shader-fs" type="x-shader/x-fragment">
+        #ifdef GL_ES
+        precision highp float;
+        #endif
+        void main(void) {
+          gl_FragColor = vec4(0.2, 0.3, 0.4, 1.0);
+      }
+  </script>
+
+  <script id="shader-vs" type="x-shader/x-vertex">
+    attribute vec3 vertexPosition;
+
+    uniform mat4 modelViewMatrix;
+    uniform mat4 perspectiveMatrix;
+
+    void main(void) {
+        gl_Position = perspectiveMatrix * modelViewMatrix * vec4(  vertexPosition, 1.0);
+    }
+</script>
+<script type = "text/javascript" src="js/particle.js"></script>
+<div id="activate-container">
+    <div id="logo">
+        <h1 class="hogo"><i> COMMENT</i></h1>
+    </div>
+    <section class="stark-login">
+        <formbox action="" method="">
+            <div id="fade-box">
+                <button type="active" id="activate1" class="stark-login cbtn">SUIT UP</button>
+                <button type="active" id="activate2" class="cbtn">FINAL BATTLE</button>
+                <button type="active" id="activate3" class="cbtn">Mandarin</button>
+                <button type="active" id="activate4" class="cbtn">Easter Eggs</button>
+            </div>
+        </formbox>
+        <div class="hexagons">
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <br>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <br>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+
+            <br>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <br>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+        </div>
+    </section>
+
+    <div id="circle1">
+        <div id="inner-cirlce1">
+            <h2> </h2>
         </div>
     </div>
-    <div class="col-lg-6 align-items-center my-5">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<div class="row">
+    <div class="col-lg-6 align-items-center my-5" id="comment-area" style="display:none;">
       <div class="row">
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="25" placeholder="Enter Your comments"></textarea>
-        <div class="col-auto">
-          <button type="submit" class="btn btn-primary sbtn">Submit</button>
+        <div class="col-auto" style="width:100%;text-align:center;">
+          <button type="submit" id = "sbtn" class="btn btn-primary">CHARGE</button>
       </div>
   </div>
 </div>            
-<div class="col-lg-6 align-items-center my-5">
-    <div class="cover-part"></div>
+<div class="col-lg-6 align-items-center my-5 comment-media" id="comment-media1" style="display:none;">
     <div class="scrollmenu">
         <a>
-            <iframe class="cimg" src="https://www.youtube-nocookie.com/embed/YLorLVa95Xo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </a>
-        <a>
-            <iframe class="cimg" src="https://www.youtube-nocookie.com/embed/oYSD2VQagc4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/gyIC0zq1q50" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </a>
 
-        <a>
-            <img src="img/img1.png" class="cimg">
-        </a>
         <a>
             <img src="img/img2.png" class="cimg">
         </a>
         <a>
             <img src="img/img3.jpeg" class="cimg">
+        </a>
+        <a>
+            <img src="img/img1.png" class="cimg">
+        </a>
+
+    </div>
+    <div class="scrollcomment">
+        <div class="wrapper">
+            <input id="exp1" class="exp"  type="checkbox">
+            <div class="text">
+                <label class="ebtn" for="exp1"></label>
+                Before Tony creates the Mark 42, an early prototype is shown in The Avengers with the Mark 7. In that film, a cocoon jets out of Stark Tower to catch Tony as he freefalls from the high-rise. It features a much faster suit application and sets up his default method for getting out of suits no matter the location. However, the Mark 42 takes things a step further thanks to a collection of nanochips in Tony's arm that link to his central nervous system. With these chips, parts of the suit can attach to Tony from any location, offering a faster suit up so that he isn't left exposed for long.
+            </div>
+        </div>
+        <div class="wrapper">
+            <input id="exp2" class="exp"  type="checkbox">
+            <div class="text">
+                <label class="ebtn" for="exp2"></label>
+                shangsta9 November 2013:
+                The first time I saw this movie I really didn't like it, I had just come off the high of "The Avengers" and let me make it clear, this one isn't as good. That said it is significantly better than Iron Man 2 and that's because the story is deeper and direct. There's a lot less focus on explosions and fancy effects (although there is plenty of that) and more on dialogue and character development.
+                One thing I like about this movie is that you get to learn more about Tony Stark, as much as I loved his arrogance in IM1, 2 at the end of Avengers he was humbled and that continues in this one. On the one hand I love the suits and the fancy technology but it's Robert Downey's sarcasm and wit that make him so great for this franchise.
+                Yes there is a big plot twist but it by no means ruins the movie and while I was not a fan of the ending, you can see where things are going towards Avengers 2.
+                It may not be for you, my only advice is to make sure you watch it again. I was angry the first time I did and thought the movie was a joke, each additional time I've watched it I take something more from it and enjoy it a little more.
+                Usually the third movie in a series is a let down
+            </div>
+        </div>
+        <div class="wrapper">
+            <input id="exp3" class="exp"  type="checkbox">
+            <div class="text">
+                <label class="ebtn" for="exp3"></label>
+                The Mark XLII (Mark 42), known by its code name "Extremis" or the “Prodigal Son” is an Autonomous Prehensile Propulsion Suit Prototype was the forty second armor, as well as one of the many newly built suits, created by Tony Stark sometime after the events of The Avengers. It served as a prototype for Mark XLIII which could be found in Avengers : Age Of Ultron.
+            </div>  
+        </div>
+    </div>
+</div>
+<div class="col-lg-6 align-items-center my-5 comment-media" id="comment-media2" style="display:none;">
+    <div class="scrollmenu">
+        <a>
+            <iframe src="https://www.youtube.com/embed/cseyd_CRKF0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </a>
+        <a>
+            <img src="img/img3.jpeg" class="cimg">
+        </a>
+        <a>
+            <img src="img/img1.png" class="cimg">
+        </a>
+        <a>
+            <img src="img/img2.png" class="cimg">
         </a>
 
     </div>
@@ -177,8 +333,9 @@
         <input id="exp1" class="exp"  type="checkbox">
         <div class="text">
             <label class="ebtn" for="exp1"></label>
-            Lorem:
-            Hated it at first, I like it more each time I re-watch
+            I was not a fan of the ending, you can see where things are going towards Avengers 2.
+            It may not be for you, my only advice is to make sure you watch it again. I was angry the first time I did and thought the movie was a joke, each additional time I've watched it I take something more from it and enjoy it a little more.
+            Usually the third movie in a series is a let down
         </div>
     </div>
     <div class="wrapper">
@@ -197,10 +354,104 @@
         <input id="exp3" class="exp"  type="checkbox">
         <div class="text">
             <label class="ebtn" for="exp3"></label>
-            JayPatton8831 August 2020:
-            Not in the case of Iron man III in the Iron man trilogy.
+            The Mark XLII (Mark 42), known by its code name "Extremis" or the “Prodigal Son” is an Autonomous Prehensile Propulsion Suit Prototype was the forty second armor, as well as one of the many newly built suits, created by Tony Stark sometime after the events of The Avengers. It served as a prototype for Mark XLIII which could be found in Avengers : Age Of Ultron.
         </div>  
     </div>
+</div>
+
+<div class="col-lg-6 align-items-center my-5 comment-media" id="comment-media3" style="display:none;">
+    <div class="scrollmenu">
+        <a>
+            <iframe src="https://www.youtube.com/embed/iUU8OBEXhw8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </a>
+        <a>
+            <img src="img/img1.png" class="cimg">
+        </a>
+        <a>
+            <img src="img/img2.png" class="cimg">
+        </a>
+        <a>
+            <img src="img/img3.jpeg" class="cimg">
+        </a>
+
+    </div>
+
+    <div class="wrapper">
+        <input id="exp1" class="exp"  type="checkbox">
+        <div class="text">
+            <label class="ebtn" for="exp1"></label>
+            I was not a fan of the ending, you can see where things are going towards Avengers 2.
+            It may not be for you, my only advice is to make sure you watch it again. I was angry the first time I did and thought the movie was a joke, each additional time I've watched it I take something more from it and enjoy it a little more.
+            Usually the third movie in a series is a let down
+        </div>
+    </div>
+    <div class="wrapper">
+        <input id="exp2" class="exp"  type="checkbox">
+        <div class="text">
+            <label class="ebtn" for="exp2"></label>
+            shangsta9 November 2013:
+            The first time I saw this movie I really didn't like it, I had just come off the high of "The Avengers" and let me make it clear, this one isn't as good. That said it is significantly better than Iron Man 2 and that's because the story is deeper and direct. There's a lot less focus on explosions and fancy effects (although there is plenty of that) and more on dialogue and character development.
+            One thing I like about this movie is that you get to learn more about Tony Stark, as much as I loved his arrogance in IM1, 2 at the end of Avengers he was humbled and that continues in this one. On the one hand I love the suits and the fancy technology but it's Robert Downey's sarcasm and wit that make him so great for this franchise.
+            Yes there is a big plot twist but it by no means ruins the movie and while I was not a fan of the ending, you can see where things are going towards Avengers 2.
+            It may not be for you, my only advice is to make sure you watch it again. I was angry the first time I did and thought the movie was a joke, each additional time I've watched it I take something more from it and enjoy it a little more.
+            Usually the third movie in a series is a let down
+        </div>
+    </div>
+    <div class="wrapper">
+        <input id="exp3" class="exp"  type="checkbox">
+        <div class="text">
+            <label class="ebtn" for="exp3"></label>
+            The Mark XLII (Mark 42), known by its code name "Extremis" or the “Prodigal Son” is an Autonomous Prehensile Propulsion Suit Prototype was the forty second armor, as well as one of the many newly built suits, created by Tony Stark sometime after the events of The Avengers. It served as a prototype for Mark XLIII which could be found in Avengers : Age Of Ultron.
+        </div>  
+    </div>
+</div>
+
+<div class="col-lg-6 align-items-center my-5 comment-media" id="comment-media4" style="display:none;">
+    <div class="scrollmenu">
+        <a>
+            <iframe src="https://www.youtube.com/embed/OM2tqRrbXjE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </a>
+        <a>
+            <img src="img/img1.png" class="cimg">
+        </a>
+        <a>
+            <img src="img/img2.png" class="cimg">
+        </a>
+        <a>
+            <img src="img/img3.jpeg" class="cimg">
+        </a>
+
+    </div>
+
+    <div class="wrapper">
+        <input id="exp1" class="exp"  type="checkbox">
+        <div class="text">
+            <label class="ebtn" for="exp1"></label>
+            I was not a fan of the ending, you can see where things are going towards Avengers 2.
+            It may not be for you, my only advice is to make sure you watch it again. I was angry the first time I did and thought the movie was a joke, each additional time I've watched it I take something more from it and enjoy it a little more.
+            Usually the third movie in a series is a let down
+        </div>
+    </div>
+    <div class="wrapper">
+        <input id="exp2" class="exp"  type="checkbox">
+        <div class="text">
+            <label class="ebtn" for="exp2"></label>
+            shangsta9 November 2013:
+            The first time I saw this movie I really didn't like it, I had just come off the high of "The Avengers" and let me make it clear, this one isn't as good. That said it is significantly better than Iron Man 2 and that's because the story is deeper and direct. There's a lot less focus on explosions and fancy effects (although there is plenty of that) and more on dialogue and character development.
+            One thing I like about this movie is that you get to learn more about Tony Stark, as much as I loved his arrogance in IM1, 2 at the end of Avengers he was humbled and that continues in this one. On the one hand I love the suits and the fancy technology but it's Robert Downey's sarcasm and wit that make him so great for this franchise.
+            Yes there is a big plot twist but it by no means ruins the movie and while I was not a fan of the ending, you can see where things are going towards Avengers 2.
+            It may not be for you, my only advice is to make sure you watch it again. I was angry the first time I did and thought the movie was a joke, each additional time I've watched it I take something more from it and enjoy it a little more.
+            Usually the third movie in a series is a let down
+        </div>
+    </div>
+    <div class="wrapper">
+        <input id="exp3" class="exp"  type="checkbox">
+        <div class="text">
+            <label class="ebtn" for="exp3"></label>
+            The Mark XLII (Mark 42), known by its code name "Extremis" or the “Prodigal Son” is an Autonomous Prehensile Propulsion Suit Prototype was the forty second armor, as well as one of the many newly built suits, created by Tony Stark sometime after the events of The Avengers. It served as a prototype for Mark XLIII which could be found in Avengers : Age Of Ultron.
+        </div>  
+    </div>
+</div>
 </div>
 </div>
 
