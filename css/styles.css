@@ -854,7 +854,7 @@ body {
 
 #box {
     position: absolute;
-    z-index: 100x;
+    z-index: 100;
     background-color: white;
     width: 50%;
     height: 0px;
